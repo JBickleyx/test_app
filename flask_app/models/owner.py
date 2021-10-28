@@ -24,7 +24,11 @@ class Owner:
     query = "SELECT * FROM owners;"
     #send it to the db
     results_from_db = connectToMySQL(cls.db_name).query_db(query) # List of Dict
+
     #parse the results from the database and turn them into objects
     all_owners = []
+    print(results_from_db)
     for row in results_from_db:
-      return all_owners
+      all_owners.append(cls(row))
+      
+    return all_owners
